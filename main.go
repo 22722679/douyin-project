@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ORM-simple/middleware/ftp"
-	"ORM-simple/mysql"
+	"douyin-project/middleware/ftp"
+	"douyin-project/mysql"
 	"fmt"
 
 	//"net/http"
