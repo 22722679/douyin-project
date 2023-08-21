@@ -2,7 +2,7 @@ package mysql
 
 import (
 	"database/sql"
-	"ORM-simple/model"
+	"douyin-project/model"
 	"go.uber.org/zap"
 )
 
