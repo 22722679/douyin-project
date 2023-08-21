@@ -1,7 +1,7 @@
 package main
 
 import (
-	"douyin-project/middleware/ftp"
+	//"douyin-project/middleware/ftp"
 	"douyin-project/mysql"
 	"fmt"
 
