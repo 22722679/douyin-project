@@ -1,7 +1,7 @@
 package ftp
 
 import (
-	"ORM-simple/config"
+	"douyin-project/config"
 	"log"
 	"time"
 
