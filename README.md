@@ -11,6 +11,7 @@
 - GIN
 - Viper
 - Zap
+- sqlx
 - GORM
 - MySQL
 - 阿里云对象存储OOS
@@ -51,6 +52,8 @@
 │   └── user.go
 ├── oss
 │   └── oss.go
+├── util
+│   └── util.go
 └── main.go (主启动文件)
 ```
 
