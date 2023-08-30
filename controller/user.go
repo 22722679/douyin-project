@@ -45,4 +45,3 @@ func UserInfo(ctx *gin.Context) {
 	return
 
 }
-
