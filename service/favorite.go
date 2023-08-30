@@ -11,6 +11,7 @@ import (
 	"github.com/22722679/douyin-project/mysql"
 
 	"strconv"
+  _"github.com/gin-gonic/gin"
 
 )
 
@@ -80,32 +81,5 @@ func FavoriteList(userId uint) (model.PublishListResponse, error) {
 
 	}, nil
 
-	// var favoriteList []model.Favorite
-
-	// VideoList := make([]model.VideoInfo, 0)
-
-
-
-	// if err := mysql.DB.Table("favorite").Where("user_id=? AND status=?", userId, 1).Find(&favoriteList).Error; err != nil {
-
-	// 	return VideoList, nil
-
-	// }
-
-	// for _, e := range favoriteList {
-
-	// 	var video = model.VideoInfo{}
-
-	// 	if err := mysql.DB.Table("video_infos").Where("id=?", e.VideoId).Find(&video).Error; err != nil {
-
-	// 		return nil, err
-
-	// 	}
-
-	// 	VideoList = append(VideoList, video)
-
-	// }
-
-	// return VideoList, nil
 
 }
