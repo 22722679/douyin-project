@@ -1,19 +1,72 @@
 package service
 
-
-
 import (
 
 	//"douyin-project/config"
 
+	"net/http"
+  "fmt"
 	"github.com/22722679/douyin-project/model"
-
+  "crypto/md5"
 	"github.com/22722679/douyin-project/mysql"
-
+  "gorm.io/gorm"
 	"strconv"
-
 )
 
+func Register(request *model.ReAndLogRequest) model.ReAndLogResponse {
+  var errID int64 = -1 
+  perrId := &errID
+  //check长度
+  if len(request.Username) >32 || len(request.Password) >32 {
+    msg := "account or password is too long"
+    return model.ReAndLogResponse{
+      StatusCode:    http.StatusBadRequest,
+      StatusMsg:     &msg,
+      UserID:        perrId,
+      Token:         nil,
+    }
+  }
+  fmt.Printf("%v\n", request);
+  
+  // 重复性检验
+  count := mysql.CheckUserName(request.Username)
+  if count != 0 {
+    msg := "用户已存在"
+    return model.ReAndLogResponse{
+      StatusCode:    http.StatusBadRequest,
+      StatusMsg:     &msg,
+      UserID:        perrId,
+      Token:         nil,
+    }
+  }
+  //密码加密
+  request.Password = fmt.Sprintf("%x", md5.Sum([]byte(request.Password)))
+  //插入数据库
+  regisInfo := model.RegisterInfo {
+    Model:       gorm.Model{},
+    UserName:    request.Username,
+    Password:    request.Password,
+  }
+  //插入到注册信息表
+  userId, _ := mysql.InserRegisterInfo(regisInfo) // 返回int64
+  userInfo := model.User{
+    Model: gorm.Model{ID: uint(userId),},
+    Username: request.Username,
+    Password: request.Password,
+    
+  }
+  fmt.Printf("sss\n");
+  //将用户插入用户信息表
+  mysql.InsertUserInfo(userInfo)
+
+  msg := "注册成功"
+  return model.ReAndLogResponse{
+      StatusCode:    http.StatusOK,
+      StatusMsg:     &msg,
+      UserID:        &userId,
+      Token:         nil,
+    }
+}
 
 
 func UserInfoService(userId uint) (model.UserInfoResponse, error) {
