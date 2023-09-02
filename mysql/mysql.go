@@ -7,21 +7,9 @@ import (
 	"github.com/22722679/douyin-project/config"
 
 	"fmt"
-
-
-
-	//"gorm.io/gorm"
-
 	_ "github.com/go-sql-driver/mysql"
-
-
-
-	//"gorm.io/gorm/schema"
-
 	"github.com/jmoiron/sqlx"
-
 	"github.com/spf13/viper"
-
 	"go.uber.org/zap"
 
 )
@@ -32,47 +20,9 @@ var db *sqlx.DB
 
 
 
-// var db *sqlx.DB
 
-// func Init() (err error) {
 
 func Init() (err error) {
-
-
-
-	// sql := fmt.Sprintf("%s:%s@tcp(%s)/douyin?charset=utf8mb4&parseTime=True&loc=Local", config.User, config.PassWord, config.IpMessage)
-
-
-
-	// db, _ = gorm.Open(mysql.Open(sql), &gorm.Config{
-
-	// 	NamingStrategy: schema.NamingStrategy{
-
-	// 		SingularTable: true,
-
-	// 	},
-
-	// })
-
-
-
-	// if err != nil {
-
-	// 	fmt.Printf("连接数据库失败！")
-
-	// }
-
-
-
-	// if err := db.AutoMigrate(&model.VideoInfo{}, &model.UserInfo{}, &model.User{}); err != nil {
-
-	// 	fmt.Println("错误")
-
-	// }
-
-
-
-	//return
 
 	db, err = sqlx.Connect("mysql", fmt.Sprintf("%s:%s@tcp(%s)/douyin?charset=utf8mb4&parseTime=True&loc=Local", config.User, config.PassWord, config.IpMessage))
 
@@ -84,13 +34,6 @@ func Init() (err error) {
 
 	}
 
-
-
-	//if err := db.AutoMigrate(&model.VideoInfo{}, &model.UserInfo{}, &model.User{}); err != nil {
-
-	//	fmt.Println("错误",err)
-
-	//}
 
 	db.SetMaxOpenConns(viper.GetInt("mysql.max_open_conns")) //设置数据库的最大打开连接数
 
@@ -107,7 +50,6 @@ func Close() { //数据库关闭返回空
 	_ = db.Close()
 
 }
-
 
 
 func GETDB() *sqlx.DB {
