@@ -18,18 +18,6 @@ import (
 
 func SelectVideoInfo() (videoList []*model.VideoInfo, err error) {
 
-	//sqlStr := "select author_id, play_url, cover_url, favorite_count, comment_count, title from video_infos"
-
-
-
-	//if err := db.Select(&videoList, sqlStr).Table("video_infos"); err == nil {
-
-	//	fmt.Printf("数据库中没有视频")
-
-	//return nil, err
-
-	//}
-
 	sqlStr := "select author_id, play_url, cover_url, favorite_count, comment_count, title from video_infos"
 
 	if err := db.Select(&videoList, sqlStr); err != nil {
@@ -49,14 +37,6 @@ func SelectVideoInfo() (videoList []*model.VideoInfo, err error) {
 
 
 func SelectVideoInfoListByUserId(id int64) ([]*model.Video, error) {
-
-	//var videoList []*model.VideoInfo
-
-	//if err := db.Where("author_id = ?").Find(&videoList).Error; err != nil {
-
-	//	return nil, err
-
-	//}
 
 	var UserId []*model.Video
 
