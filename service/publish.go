@@ -40,28 +40,6 @@ func PublishList(userId, loginuserId uint) (model.PublishListResponse, error) {
 
 
 
-	//视频基本信息
-
-	//videoListBase, err := mysql.SelectVideoInfoListByUserId(int64(userId))
-
-	//if err != nil {
-
-	//	msg := "查询用户信息失败"
-
-	//	return model.PublishListResponse{
-
-	//		StatusCode: 1,
-
-	//		StatusMsg: &msg,
-
-	//		UserList: nil,
-
-	//	},err
-
-	//}
-
-
-
 	//视频数据进行封装
 
 	videos := make([]model.Video, 0)
@@ -101,13 +79,3 @@ func PublishList(userId, loginuserId uint) (model.PublishListResponse, error) {
 }
 
 
-
-func PublishAction(request *model.PublishActionRequest, userId uint) (int32, error) {
-
-	//requestA := new(model.PublishActionRequest)
-
-	//if err := ctx.
-
-	return 0, nil
-
-}
