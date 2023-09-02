@@ -21,6 +21,9 @@ import (
 
 
 func InitRouter(r *gin.Engine) {
+  //初始化ftp服务器连接
+	//ftp.InitFTP()
+	//--------------------------------
 
 	r.GET("/douyin/feed", VideoInfoHandler)
 
@@ -35,7 +38,8 @@ func InitRouter(r *gin.Engine) {
 	r.GET("/douyin/publish/list/", controller.PublishList)
 
 	r.GET("/douyin/favorite/list/", controller.FavoriteList)
-
+	
+	r.POST("/douyin/favorite/action/",controller.FavoriteAction)
 }
 
 
@@ -49,3 +53,4 @@ func VideoInfoHandler(c *gin.Context) {
 	ResponseSuccess(c, data)
 
 }
+
