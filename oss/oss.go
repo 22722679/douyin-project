@@ -3,8 +3,8 @@ package oss
 import (
 	"net/http"
 	"net/url"
-
 	"github.com/tencentyun/cos-go-sdk-v5"
+	"github.com/22722679/douyin-project/config"
 )
 
 var cli *cos.Client
