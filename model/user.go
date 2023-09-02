@@ -1,16 +1,23 @@
 package model
 
-//import "github.com/jinzhu/gorm"
+
+
+import "gorm.io/gorm"
+
+
+
 
 
 //用户账号、密码信息
+
 type User struct {
-	//gorm.Model
+
+	gorm.Model
 	Username string `json:"username"`
+
 	Password string `json:"password"`
+
+  Token string `json:"token"`
 }
 
-//type UserI struct {
-//	gorm.Model
-//	Name string `json:name,omitempty`
-//}
+
