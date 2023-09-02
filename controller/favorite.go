@@ -1,10 +1,11 @@
 package controller
 
 import (
-//	"log"
 
+	"github.com/22722679/douyin-project/model"
+	"github.com/22722679/douyin-project/mysql"
 	"github.com/22722679/douyin-project/service"
- // "github.com/22722679/douyin-project/model"
+
 
 	"net/http"
 
@@ -40,35 +41,33 @@ func FavoriteList(ctx *gin.Context){
 
 
 //视频点赞功能
-func favoriteAction(ctx *gin.Context){
-  // //判断用户是否登录
-  // stUserId := ctx.GetString("userId")
-  // userId, _ := strconv.ParseInt(stUserId,10,64)
-  // strVideoId := ctx.Query("video_id")
-  // videoId, _ := strconv.ParseInt(strVideoId,10,64)
-  // strActionType := ctx.Query("action_type")
-  // actionType, _ := strconv.ParseInt(strActionType,10,64)
-  // like := new(service.LikeService)
+func FavoriteAction(ctx *gin.Context){
+  //user_id参数与赞操作绑定
+  getUserId, _ := ctx.Get("user_id")
+  var userId uint
+  if cs, err := getUserId.(uint); err{
+    userId = cs
+  }
 
-  // //点赞操作
-  // err := like.FavouriteAction(userId,videoId,int32(actionType))
-  // if err == nil {
-  //   log.Printf("favoriteAction获取userid，videoId，actiontype成功")
-  //   ctx.JSON(http.StatusOK,likeResponse{
-  //       StatusCode:       0,
-  //       StatusMsg:       "favorite action success",
-  //   })
-  // } else {
-  //   log.Printf("Action获取userid，videoId，actiontype失败：%v",err)
-  //   ctx.JSON(http.StatusOK,likeResponse{
-  //     StatusCode:         1,
-  //     StatusMsg:          "favorite action error",
-  //   })
-  // }
+  //参数获取
+  StractionType := ctx.Query("action_type")
+  actionType, _ := strconv.ParseUint(StractionType,10,10)
+  StrVideoId := ctx.Query("video_id")
+  VideoId, _ := strconv.ParseUint(StrVideoId,10,10)
+
+  //service以及响应
+  err := mysql.FavoriteAction(userId ,uint(VideoId),uint(actionType))
+  if err != nil {
+    ctx.JSON(http.StatusBadRequest,model.Response{
+      StatusCode:       1,
+      StatusMsg:        err.Error(),
+    })
+  } else{
+    ctx.JSON(http.StatusOK,model.Response{
+      StatusCode:      0,
+      StatusMsg:       "success",
+    })
+  }
 }
 
-type likeResponse struct {
-  StatusCode    int32     `json:"status_code"`
-  StatusMsg     string    `json:"status_msg,omitempty"`
-}
 
