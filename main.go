@@ -24,16 +24,6 @@ func main() {
 
 	r := gin.Default() //创建服务
 
-
-
-	//初始化ftp服务器连接
-
-	//ftp.InitFTP()
-
-	//--------------------------------
-
-
-
 	if err := mysql.Init(); err != nil { //数据库启动失败的返回
 
 		fmt.Printf("mysql启动失败，err:%v\n", err)
