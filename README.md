@@ -77,10 +77,10 @@ git clone https://github.com/22722679/douyin-project.git
 ### 项目作者
  张小虎
  
-#### 演示视频
-[![Watch the video]([[https://lf3-static.bytednsdoc.com/obj/eden-cn/wthJoabvf_lm_tyvmahsWgpi/ljhwZthlaukjlkulzlp/images/introduce.png](https://lf3-static.bytednsdoc.com/obj/eden-cn/wthJoabvf_lm_tyvmahsWgpi/ljhwZthlaukjlkulzlp/images/content1.png](https://p26-passport.byteacctimg.com/img/user-avatar/d8b890417b0c0dd09c0e1dad1f1ecd0e~120x120.awebp)))]()
+### 演示视频
+[![Watch the video](https://p26-passport.byteacctimg.com/img/user-avatar/d8b890417b0c0dd09c0e1dad1f1ecd0e~120x120.awebp)]()
 
-#### 使用到的相关技术
+### 使用到的相关技术
 框架相关：
 - [Gin](https://gin-gonic.com/docs/)
 - [Gorm](https://gorm.io/docs/)
