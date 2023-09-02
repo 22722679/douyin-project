@@ -10,7 +10,7 @@ const PlayUrl = "https://static.www.tencent.com/uploads/2021/09/07/bd0a889911f55
 
 const Tiele = "tradition Craft"
 
-const Id = 2
+const Id = 7
 
 const FavoriteCount = 3
 
@@ -24,8 +24,8 @@ const BackgroundImages = "https://www.tsinghua.edu.cn/__local/0/E9/B5/123588172A
 
 const Signature = "感谢大家支持"
 
-const TotalFavorited = "320W"
+const TotalFavorited = "32"
 
 const WorkCount = 231
 
-const FavoriteCountl = 5214
+const FavoriteCountl = 52
