@@ -33,7 +33,7 @@ func InitRouter(r *gin.Engine) {
 
 	r.GET("/douyin/user", controller.UserInfo)
 
-	r.POST("/douyin/publish/action/", controller.PublishAction)
+	r.POST("/douyin/publish/action/", controller.Publish)
 
 	r.GET("/douyin/publish/list/", controller.PublishList)
 
