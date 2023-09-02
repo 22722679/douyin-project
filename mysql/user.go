@@ -14,7 +14,6 @@ import (
 
 func CheckUserName(username string) uint{
   // var registerInfo model.RegisterInfo
-  // 用户名  注册表？？？
   var Id string
   sqlStr := "SELECT id from users WHERE username = ?"
   if err := db.Get(&Id,sqlStr, username);err != nil {
@@ -53,7 +52,7 @@ func SelectUserName(userId int64) (string, error) {
 
 }
 
-
+//插入用户名
 func InsertUserInfo(userInfo model.User) error{
     sqlStr := "insert into users(username,password) values(?,?)"
     if _,err := db.Exec(sqlStr,userInfo.Username, userInfo.Password); err != nil{
@@ -62,4 +61,3 @@ func InsertUserInfo(userInfo model.User) error{
     }
   return nil
 }
-
