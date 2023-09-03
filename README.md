@@ -78,7 +78,7 @@ git clone https://github.com/22722679/douyin-project.git
  张小虎
  
 ### 演示视频
-[![Watch the video]([https://p26-passport.byteacctimg.com/img/user-avatar/d8b890417b0c0dd09c0e1dad1f1ecd0e~120x120.awebp](https://lf1-cdn-tos.bytescm.com/obj/static/ies/bytedance_official/_next/static/images/0-390b5def140dc370854c98b8e82ad394.png))]()
+[![Watch the video]([https://p26-passport.byteacctimg.com/img/user-avatar/d8b890417b0c0dd09c0e1dad1f1ecd0e~120x120.awebp](https://lf1-cdn-tos.bytescm.com/obj/static/ies/bytedance_official/_next/static/images/0-390b5def140dc370854c98b8e82ad394.png))](https://www.bilibili.com/video/BV1ow411S7vc/?vd_source=4cbd2d924b1efbce235b9f288896cf6f)
 
 ### 使用到的相关技术
 框架相关：
