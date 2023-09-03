@@ -123,41 +123,42 @@ func FavoriteAction(userId uint,videoId uint, actionType uint)(err error){
         return err
       }
       return err
-    }
-    //存在
-    if favoriteCancel.Status == 1 {   //status为1-video的favorite_count减1
-        sqlStr := "update video_infos set favorite_count=favorite_count-1 where author_id =?"
-        ret, err := db.Exec(sqlStr,videoId)
-        if err != nil {
-          fmt.Printf("update failed, err:%v \n",err)
-          return nil
-        }
-        ne, err := ret.RowsAffected()
-        if err != nil {
-          fmt.Printf("get RowsAffected failed, err: %v\n",err)
-          return nil
-        }
-        fmt.Printf("update success ,affected rows:%d \n",ne)
-        sqlstr := "update favorites set status = 0 where video_id = ?"
-        re, err := db.Exec(sqlstr,videoId)
-        if err != nil {
-          fmt.Printf("update failed, err:%v \n",err)
-          return nil
-        }
-        ns, err := re.RowsAffected()
-        if err != nil {
-          fmt.Printf("get RowsAffected failed, err:%v \n",err)
-          return nil
-        }
-        fmt.Printf("update success,affected rows:%d\n",ns)
-        if err := ReduceFavoriteCount(userId);err != nil {
-          return err
-        }
-        Ges, err := GetVideoAuthor(videoId)
-        if err := ReduceTotalFavorited(Ges); err != nil {
-          return err
-        }
-      return err
+    } else {
+      //存在
+        if favoriteCancel.Status == 1 {   //status为1-video的favorite_count减1
+          sqlStr := "update video_infos set favorite_count=favorite_count-1 where author_id =?"
+          ret, err := db.Exec(sqlStr,videoId)
+          if err != nil {
+            fmt.Printf("update failed, err:%v \n",err)
+            return nil
+          }
+          ne, err := ret.RowsAffected()
+          if err != nil {
+            fmt.Printf("get RowsAffected failed, err: %v\n",err)
+            return nil
+          }
+          fmt.Printf("update success ,affected rows:%d \n",ne)
+          sqlstr := "update favorites set status = 0 where video_id = ?"
+          re, err := db.Exec(sqlstr,videoId)
+          if err != nil {
+            fmt.Printf("update failed, err:%v \n",err)
+            return nil
+          }
+          ns, err := re.RowsAffected()
+          if err != nil {
+            fmt.Printf("get RowsAffected failed, err:%v \n",err)
+            return nil
+          }
+          fmt.Printf("update success,affected rows:%d\n",ns)
+          if err := ReduceFavoriteCount(userId);err != nil {
+            return err
+          }
+          Ges, err := GetVideoAuthor(videoId)
+          if err := ReduceTotalFavorited(Ges); err != nil {
+            return err
+          }
+        return err
+      }
     }
     return nil
   }
